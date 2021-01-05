@@ -1,15 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import CityComponent from "./CityWeatherComponent";
 
 function App() {
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
+            <div className="App-body">
                 <p>
-                    To będzie pogoda, tylko nie pamiętam, gdzie...
+                    WIELKA APLIKACJA POGODOWA
                 </p>
-            </header>
+                <p>
+                    [placeholder na miasto]
+                    <CityComponent />
+                </p>
+            </div>
         </div>
     );
 }
