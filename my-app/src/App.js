@@ -1,21 +1,18 @@
 import './App.css';
 import React from 'react';
-import CityComponent from "./CityWeatherComponent";
+import ShowWeatherInCity from "./CityWeatherComponent";
 
-function App() {
+export default function App() {
     return (
         <div className="App">
             <div className="App-body">
                 <p>
                     WIELKA APLIKACJA POGODOWA
                 </p>
-                <p>
-                    [placeholder na miasto]
-                    <CityComponent />
-                </p>
+                <div>
+                    <ShowWeatherInCity />
+                </div>
             </div>
         </div>
     );
 }
-
-export default App;
