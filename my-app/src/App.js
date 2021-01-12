@@ -13,6 +13,8 @@ export default function App(props) {
                     <ShowWeatherInCity cityName="Zawory,pl"/> <br />
                     <ShowWeatherInCity cityName="Warszawa,pl"/> <br />
                     <ShowWeatherInCity cityName="Manchester,uk"/> <br />
+                    <ShowWeatherInCity cityName="Bialystok,pl"/> <br />
+
                 </div>
             </div>
         </div>
