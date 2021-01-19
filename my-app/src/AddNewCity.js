@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import axios from "axios";
 import './AddNewCity.css';
 
 export default function AddNewCityToList(props) {
@@ -26,8 +25,8 @@ export default function AddNewCityToList(props) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label for="city-name">Dodaj miasto</label>
-                <input type="text" id="city-to-add" value={input} onChange={handleInputChange}/><br />
+                <label>Dodaj miasto</label>
+                <input type="text" id="city-to-add" value={input} placeholder="np. Białystok" onChange={handleInputChange}/><br />
                 <input type="button" value="Dodaj" className="button-add" onClick={handleSubmit}/>
             </form>
         </div>
