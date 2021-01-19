@@ -1,0 +1,9 @@
+input {
+  margin: 5px;
+  font-size: 15px;
+  color: gray;
+}
+
+form {
+  display: inline-flex;
+}
