@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-// import ShowWeatherInCity from "./CityWeatherComponent";
 import AddNewCity from "./AddNewCity";
+import List from "./List";
 
 export default function App(props) {
 
@@ -16,7 +16,7 @@ export default function App(props) {
                     WIELKA APLIKACJA POGODOWA
                 </p>
                 <div>
-                    {"<List />"}
+                    <List />
                     <AddNewCity onAdd={addNewCityToList}/>
                 </div>
             </div>
