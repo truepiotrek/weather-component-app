@@ -1,11 +1,31 @@
 import './App.css';
-import React from 'react';
+import React, {useState} from 'react';
 import AddNewCity from "./AddNewCity";
-import List from "./List";
+import Dump from "./dump";
+import ShowWeatherInCity from "./CityWeatherComponent";
 
 export default function App(props) {
+    const [cityList, updateCityList] = useState(['Zawory', 'Warszawa']);
 
-    function addNewCityToList() {
+
+
+    function renderIfThereAreCities() {
+        if(cityList.length === 0) {
+            return (
+                <span className="default-message">Brak miast do wyświetlenia</span>
+            );
+        }
+
+        return (
+            <>
+            {cityList && cityList.map(function(item, index) {
+                return (<div key={index + ' ' + item}><ShowWeatherInCity cityName={item} /></div>);
+            })}
+            </>
+        );
+    }
+
+    function addNewCityToCityList() {
         console.log('adding new city to the list')
     }
 
@@ -16,8 +36,8 @@ export default function App(props) {
                     WIELKA APLIKACJA POGODOWA
                 </p>
                 <div>
-                    <List />
-                    <AddNewCity onAdd={addNewCityToList}/>
+                    {renderIfThereAreCities()}
+                    <AddNewCity onAdd={addNewCityToCityList}/>
                 </div>
             </div>
         </div>

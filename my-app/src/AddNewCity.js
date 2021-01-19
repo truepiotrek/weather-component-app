@@ -17,7 +17,6 @@ export default function AddNewCityToList(props) {
             if (typeof props.onAdd === 'function') {
                 props.onAdd(input);
             }
-            console.log('beep');
             setInput('');
         }
     }
