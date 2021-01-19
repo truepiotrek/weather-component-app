@@ -5,7 +5,9 @@ export default function List(props) {
 
     return (
         <div className="list-container">
-            Tutaj znajdują się kolejne miasta
+            {"<ListItem />"} <br />
+            {"<ListItem />"} <br />
+            {"<ListItem />"} <br />
         </div>
     );
 }
