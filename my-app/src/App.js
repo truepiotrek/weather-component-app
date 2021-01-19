@@ -10,7 +10,8 @@ export default function App(props) {
                     WIELKA APLIKACJA POGODOWA
                 </p>
                 <div>
-                    <ShowWeatherInCity cityName="Zawory,pl"/> <br />
+                    {/*<ShowWeatherInCity cityName="Zawory,pl"/> <br />*/}
+                    "testing testing one two three"
                 </div>
             </div>
         </div>
