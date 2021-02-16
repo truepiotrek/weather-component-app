@@ -15,15 +15,15 @@ export default function App(props) {
         }
 
         return (
-            <>
+            <div>
             {cityList && cityList.map(function(item, index) {
-                return (<div key={index + ' ' + item}><ShowWeatherInCity cityName={item} />
+                return (<div className="city-container" key={index + ' ' + item}><ShowWeatherInCity cityName={item}/>
                 <a href="#" className={"city-removal"} onClick={removeCityFromList}>
                     remove city [x]
                 </a>
                 </div>);
             })}
-            </>
+            </div>
         );
     }
 
