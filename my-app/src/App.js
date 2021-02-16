@@ -8,7 +8,6 @@ export default function App(props) {
     const [cityList, updateCityList] = useState(['Zawory', 'Warszawa']);
 
 
-
     function renderIfThereAreCities() {
         if(cityList.length === 0) {
             return (
@@ -25,8 +24,13 @@ export default function App(props) {
         );
     }
 
-    function addNewCityToCityList() {
+    function addNewCityToCityList(cityName) {
         console.log('adding new city to the list')
+
+        let clonedCityList = [...cityList]
+
+        clonedCityList.push(cityName);
+        updateCityList(clonedCityList);
     }
 
     return (
