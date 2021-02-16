@@ -1,36 +1,43 @@
 import './App.css';
 import React, {useState} from 'react';
 import AddNewCity from "./AddNewCity";
-import Dump from "./dump";
+// import Dump from "./dump";
 import ShowWeatherInCity from "./CityWeatherComponent";
 
 export default function App(props) {
-    const [cityList, updateCityList] = useState(['Zawory', 'Warszawa']);
-
+    const [cityList, updateCityList] = useState(['Warszawa']);
 
     function renderIfThereAreCities() {
         if(cityList.length === 0) {
             return (
-                <span className="default-message">Brak miast do wyświetlenia</span>
+                <div className="default-message">Brak miast do wyświetlenia</div>
             );
         }
 
         return (
             <>
             {cityList && cityList.map(function(item, index) {
-                return (<div key={index + ' ' + item}><ShowWeatherInCity cityName={item} /></div>);
+                return (<div key={index + ' ' + item}><ShowWeatherInCity cityName={item} />
+                <a href="#" className={"city-removal"} onClick={removeCityFromList}>
+                    remove city [x]
+                </a>
+                </div>);
             })}
             </>
         );
     }
 
     function addNewCityToCityList(cityName) {
-        console.log('adding new city to the list')
-
         let clonedCityList = [...cityList]
 
         clonedCityList.push(cityName);
         updateCityList(clonedCityList);
+    }
+
+    function removeCityFromList(index) {
+        let cityItem = [...cityList];
+        cityItem.splice(index, 1);
+        updateCityList(cityItem);
     }
 
     return (

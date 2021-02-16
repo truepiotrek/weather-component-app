@@ -19,3 +19,12 @@
   color: #61dafb;
 }
 
+.city-removal {
+  text-decoration: none;
+  color: white;
+}
+
+.default-message {
+  margin-bottom: 10px;
+}
+
