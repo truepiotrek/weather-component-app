@@ -5,7 +5,7 @@ import AddNewCity from "./AddNewCity";
 import ShowWeatherInCity from "./CityWeatherComponent";
 
 export default function App(props) {
-    const [cityList, updateCityList] = useState(['Warszawa']);
+    const [cityList, updateCityList] = useState([]);
 
     function renderIfThereAreCities() {
         if(cityList.length === 0) {

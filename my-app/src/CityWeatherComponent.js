@@ -5,6 +5,7 @@ import Loader from "react-loader-spinner";
 export default function ShowWeatherInCity(props) {
 
     const [temperature, setTemperature] = useState(0);
+    const [city, setCity] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -12,6 +13,7 @@ export default function ShowWeatherInCity(props) {
         axios.get('http://api.openweathermap.org/data/2.5/weather?q=' + props.cityName + '&appid=818c22ea71e55d4533a6c533966f8bcb&units=metric')
             .then(function(response) {
                 setTemperature(response.data.main.temp);
+                setCity(response.data.name);
                 setLoading(false);
             })
             .catch(function(error) {
@@ -25,7 +27,7 @@ export default function ShowWeatherInCity(props) {
         return (
             <Loader
                 type="Puff"
-                color="#00BFFF"
+                color="white"
                 height={100}
                 width={100}
                 timeout={3000} //3 secs
@@ -40,7 +42,7 @@ export default function ShowWeatherInCity(props) {
     function renderNormal() {
         return (
             <div>
-                Miasto: {props.cityName} <br />
+                Miasto: {city} <br />
                 Temperatura: {temperature} stopni Celsjusza
             </div>
         );
