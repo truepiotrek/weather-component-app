@@ -2,12 +2,15 @@ import './App.css';
 import React, {useState} from 'react';
 import AddNewCity from "./AddNewCity";
 import ShowWeatherInCity from "./CityWeatherComponent";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export default function App(props) {
     let cityListFromLocalStorage = JSON.parse(localStorage.getItem("lista_miast"))
-    console.log("this is your city list " + cityListFromLocalStorage);
-
-
+    if(!Array.isArray(cityListFromLocalStorage)) {
+        cityListFromLocalStorage = [];
+    }
+    
     const [cityList, updateCityList] = useState(cityListFromLocalStorage);
 
     function saveCityListToLocalStorage(updatedCityList) {
@@ -24,11 +27,13 @@ export default function App(props) {
         return (
             <div>
             {cityList && cityList.map(function(item, index) {
-                return (<div className="city-container" key={index + ' ' + item}><ShowWeatherInCity cityName={item}/>
-                <a href="#" className={"city-removal"} onClick={removeCityFromList}>
-                    remove city [x]
-                </a>
-                </div>);
+                return (
+                    <div className="city-container" key={index + ' ' + item}><ShowWeatherInCity cityName={item}/>
+                        <button className="city-removal" onClick={removeCityFromList}>
+                            usuń <FontAwesomeIcon icon={faTrash} />
+                        </button>
+                    </div>
+                );
             })}
             </div>
         );
@@ -41,7 +46,6 @@ export default function App(props) {
         updateCityList(clonedCityList);
 
         saveCityListToLocalStorage(clonedCityList);
-        console.log("system push to local storage " + clonedCityList)
     }
 
     function removeCityFromList(index) {
@@ -50,7 +54,6 @@ export default function App(props) {
         updateCityList(clonedCityList);
 
         saveCityListToLocalStorage(clonedCityList);
-        console.log("removing from city list " + clonedCityList)
     }
 
     return (

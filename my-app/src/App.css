@@ -20,8 +20,13 @@
 }
 
 .city-removal {
-  text-decoration: none;
+  font-size: calc(8px + 2vmin);
   color: white;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 15px;
+  top: 5px;
 }
 
 .default-message {
@@ -33,6 +38,8 @@
   border-radius: 5px;
   margin: 5px;
   padding: 5px;
+  text-align: left;
+  position: relative;
 }
 
 .city-adding-error {
