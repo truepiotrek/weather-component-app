@@ -1,11 +1,18 @@
 import './App.css';
 import React, {useState} from 'react';
 import AddNewCity from "./AddNewCity";
-// import Dump from "./dump";
 import ShowWeatherInCity from "./CityWeatherComponent";
 
 export default function App(props) {
-    const [cityList, updateCityList] = useState([]);
+    let cityListFromLocalStorage = JSON.parse(localStorage.getItem("lista_miast"))
+    console.log("this is your city list " + cityListFromLocalStorage);
+
+
+    const [cityList, updateCityList] = useState(cityListFromLocalStorage);
+
+    function saveCityListToLocalStorage(updatedCityList) {
+        localStorage.setItem('lista_miast', JSON.stringify(updatedCityList))
+    }
 
     function renderIfThereAreCities() {
         if(cityList.length === 0) {
@@ -32,12 +39,18 @@ export default function App(props) {
 
         clonedCityList.push(cityName);
         updateCityList(clonedCityList);
+
+        saveCityListToLocalStorage(clonedCityList);
+        console.log("system push to local storage " + clonedCityList)
     }
 
     function removeCityFromList(index) {
-        let cityItem = [...cityList];
-        cityItem.splice(index, 1);
-        updateCityList(cityItem);
+        let clonedCityList = [...cityList];
+        clonedCityList.splice(index, 1);
+        updateCityList(clonedCityList);
+
+        saveCityListToLocalStorage(clonedCityList);
+        console.log("removing from city list " + clonedCityList)
     }
 
     return (

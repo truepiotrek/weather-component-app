@@ -34,3 +34,10 @@
   margin: 5px;
   padding: 5px;
 }
+
+.city-adding-error {
+  color: black;
+  border: solid 1px white;
+  border-radius: 5px;
+  font-size: 20px;
+}

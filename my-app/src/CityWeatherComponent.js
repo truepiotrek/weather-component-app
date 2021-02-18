@@ -36,7 +36,7 @@ export default function ShowWeatherInCity(props) {
     }
 
     function renderError() {
-        return "Błędna nazwa miasta, spróbuj jeszcze raz ";
+        return "Ups, coś poszło nie tak";
     }
 
     function renderNormal() {
