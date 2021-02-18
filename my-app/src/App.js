@@ -2,13 +2,9 @@ import './App.css';
 import React, {useState} from 'react';
 import AddNewCity from "./AddNewCity";
 import ShowWeatherInCity from "./CityWeatherComponent";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 export default function App(props) {
     let cityListFromLocalStorage = JSON.parse(localStorage.getItem("lista_miast"));
-
-    console.log("test " + cityListFromLocalStorage);
 
     if(!Array.isArray(cityListFromLocalStorage)) {
         cityListFromLocalStorage = [];
@@ -31,11 +27,8 @@ export default function App(props) {
             <div>
             {cityList && cityList.map(function(item, index) {
                 return (
-                    <div className="city-container" key={index + ' ' + item}><ShowWeatherInCity cityName={item}/>
-                        <button className="city-removal" onClick={removeCityFromList}>
-                            <FontAwesomeIcon icon={faTimes} />
-                        </button>
-                    </div>
+                    <ShowWeatherInCity cityName={item} key={index + ' ' + item} onClickDelete={removeCityFromList}
+                    deleteIndex={index}/>
                 );
             })}
             </div>
