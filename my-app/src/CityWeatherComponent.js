@@ -9,19 +9,21 @@ export default function ShowWeatherInCity(props) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    console.log('ghjfkghfdks ' + props.cityName);
+
     useEffect(() => {
         axios.get('http://api.openweathermap.org/data/2.5/weather?q=' + props.cityName + '&appid=818c22ea71e55d4533a6c533966f8bcb&units=metric')
-            .then(function(response) {
+            .then(function (response) {
                 setTemperature(response.data.main.temp);
                 setCity(response.data.name);
                 setLoading(false);
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 setLoading(false);
                 setError(true);
                 console.log(error);
             })
-    });
+    }, [props.cityName]);
 
     function renderLoading() {
         return (
