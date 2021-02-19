@@ -42,7 +42,8 @@ export default function AddNewCityToList(props) {
         <div>
             <form onSubmit={handleSubmit}>
                 <label>Dodaj miasto</label>
-                <input type="text" id="city-to-add" value={input} placeholder="np. Białystok" onChange={handleInputChange}/><br />
+                <input type="text" id="city-to-add" value={input} placeholder="np. Białystok" onChange={handleInputChange}/>
+                <br />
                 <input type="button" value="Dodaj" className="button-add" onClick={handleSubmit}/>
             </form>
             {(validationStatus) ? '' : <div className="city-adding-error">

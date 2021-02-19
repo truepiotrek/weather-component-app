@@ -10,14 +10,29 @@ export default function ShowWeatherInCity(props) {
 
     const [temperature, setTemperature] = useState(0);
     const [city, setCity] = useState(0);
+    const [main, setMain] = useState(0);
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     useEffect(() => {
         axios.get('http://api.openweathermap.org/data/2.5/weather?q=' + props.cityName + '&appid=818c22ea71e55d4533a6c533966f8bcb&units=metric')
             .then(function (response) {
-                setTemperature(response.data.main.temp);
                 setCity(response.data.name);
+                setTemperature(response.data.main.temp);
+
+                if (Array.isArray(response.data.weather)) {
+                    console.log("array is in fact an array");
+
+                    let tablica = response.data.weather;
+
+                    if (tablica.length > 0) {
+                        setMain(tablica[0].main);
+                    }
+                } else {
+                    console.log("this is not an array");
+                }
+
                 setLoading(false);
             })
             .catch(function (error) {
@@ -34,7 +49,7 @@ export default function ShowWeatherInCity(props) {
                 color="white"
                 height={100}
                 width={100}
-                timeout={3000} //3 secs
+                timeout={3000}
             />
         )
     }
@@ -49,6 +64,7 @@ export default function ShowWeatherInCity(props) {
                 <>
                     Miasto/region: {city} <br />
                     Temperatura: {temperature} stopni Celsjusza
+                    Pogoda: {main}
                 </>
                 <button className="city-removal" onClick={cityDeleteHandler}>
                     <FontAwesomeIcon icon={faTimes} />
